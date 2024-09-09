@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}">
+    <head>
+        <title>Home page</title>
+    </head>
+    <body>
+        <div id="content">
+            <section class="hero-background py-32 text-center text-white bg-opacity-50 bg-black dark:bg-opacity-75">
+                <div class="container mx-auto px-6 lg:px-8">
+                    <h1 class="text-5xl font-extrabold mb-4 animate__animated animate__fadeInDown">
+                        Welcome to Smart Contact Manager
+                    </h1>
+                    <p class="text-xl mb-8 animate__animated animate__fadeInUp animate__delay-1s">
+                        The ultimate solution for managing and organizing your contacts effortlessly.
+                    </p>
+                    <a href="#about" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg animate__animated animate__fadeIn animate__delay-2s">
+                        Learn More
+                    </a>
+                </div>
+            </section>
+        
+            <!-- About Section -->
+            <section id="about" class="py-20 bg-gradient-to-b from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800">
+                <div class="container mx-auto px-6 lg:px-8">
+                    <div class="text-center mb-16 animate__animated animate__fadeIn">
+                        <h2 class="text-4xl font-extrabold text-blue-900 dark:text-blue-400 mb-4 animate__animated animate__fadeInUp">
+                            About Smart Contact Manager
+                        </h2>
+                        <p class="text-xl text-blue-700 dark:text-blue-600 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+                            Effortlessly manage your contacts with our powerful tool, designed to simplify your daily workflows and enhance productivity.
+                        </p>
+                    </div>
+                    <div class="flex flex-col md:flex-row items-center md:justify-between md:space-x-12">
+                        <!-- Image -->
+                        <div class="flex-1 mb-12 md:mb-0 md:order-2 animate__animated animate__fadeInRight animate__delay-2s">
+                            <img src= alt="Smart Contact Manager" class="rounded-lg shadow-xl transform hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <!-- Description -->
+                        <div class="flex-1 max-w-lg md:order-1 animate__animated animate__fadeInLeft animate__delay-2s">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border-l-4 border-blue-500">
+                                <h3 class="text-3xl font-semibold text-blue-900 dark:text-blue-100 mb-6 border-b-4 border-blue-500 pb-2 inline-block">
+                                    Our Mission
+                                </h3>
+                                <p class="text-lg text-blue-800 dark:text-blue-300 mb-6 leading-relaxed">
+                                    At Smart Contact Manager, our mission is to provide an intuitive and efficient way to manage your contacts. We understand the importance of organization and security, which is why we offer features like secure authentication, detailed activity logs, and a user-friendly interface. Whether you're an individual or a business, Smart Contact Manager is here to help you stay connected and organized.
+                                </p>
+                                <h3 class="text-3xl font-semibold text-blue-900 dark:text-blue-100 mb-4 border-b-4 border-blue-500 pb-2 inline-block">
+                                    Why Choose Us?
+                                </h3>
+                                <ul class="list-disc list-inside text-lg text-blue-800 dark:text-blue-300 space-y-3 pl-5">
+                                    <li class="flex items-start animate__animated animate__fadeInLeft animate__delay-3s">
+                                        <span class="text-blue-500 mr-2">✔️</span>
+                                        <span>Modern and user-friendly interface</span>
+                                    </li>
+                                    <li class="flex items-start animate__animated animate__fadeInLeft animate__delay-3s">
+                                        <span class="text-blue-500 mr-2">🔒</span>
+                                        <span>Advanced secure authentication methods</span>
+                                    </li>
+                                    <li class="flex items-start animate__animated animate__fadeInLeft animate__delay-3s">
+                                        <span class="text-blue-500 mr-2">📊</span>
+                                        <span>Comprehensive activity tracking</span>
+                                    </li>
+                                    <li class="flex items-start animate__animated animate__fadeInLeft animate__delay-3s">
+                                        <span class="text-blue-500 mr-2">📞</span>
+                                        <span>Responsive and dedicated customer support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+            <!-- Features Section -->
+            <section class="py-20 bg-gradient-to-b from-blue-100 to-white dark:from-gray-800 dark:to-gray-700">
+                <div class="container mx-auto px-6 lg:px-8">
+                    <div class="text-center mb-16 animate__animated animate__fadeIn">
+                        <h2 class="text-4xl font-extrabold text-blue-900 dark:text-blue-100 mb-4 animate__animated animate__fadeInUp">
+                            Key Features
+                        </h2>
+                        <p class="text-xl text-blue-700 dark:text-blue-300 max-w-2xl mx-auto animate__animated animate__fadeInUp animate__delay-1s">
+                            Discover the powerful features that make Smart Contact Manager your go-to contact management solution.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                        <!-- Feature 1 -->
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate__animated animate__fadeInUp animate__delay-2s hover:shadow-2xl transition-shadow duration-300">
+                            <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">
+                                Secure Authentication
+                            </h3>
+                            <p class="text-lg text-blue-800 dark:text-blue-300 mb-4">
+                                Use advanced authentication methods to ensure your contacts are always safe and secure.
+                            </p>
+                            <a href="#" class="text-blue-500 hover:underline">Learn more</a>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate__animated animate__fadeInUp animate__delay-3s hover:shadow-2xl transition-shadow duration-300">
+                            <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">
+                                Easy Organization
+                            </h3>
+                            <p class="text-lg text-blue-800 dark:text-blue-300 mb-4">
+                                Effortlessly organize your contacts with tags, categories, and custom filters.
+                            </p>
+                            <a href="#" class="text-blue-500 hover:underline">Learn more</a>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate__animated animate__fadeInUp animate__delay-4s hover:shadow-2xl transition-shadow duration-300">
+                            <h3 class="text-2xl font-bold text-blue-900 dark:text-blue-100 mb-4">
+                                Comprehensive Reporting
+                            </h3>
+                            <p class="text-lg text-blue-800 dark:text-blue-300 mb-4">
+                                Gain insights into your contacts with detailed activity logs and reports.
+                            </p>
+                            <a href="#" class="text-blue-500 hover:underline">Learn more</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script>
+            console.log("about");
+        </script>
+    </body>
+</html>

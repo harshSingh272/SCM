@@ -1,0 +1,43 @@
+<div th:fragment="sidebar">
+<aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-900 dark:shadow-gray-900 shadow-lg" aria-label="Sidebar">
+   <div class="text-center flex flex-col overflow-y-auto bg-gray-200 m-2 rounded-lg dark:bg-gray-700 mb-5">
+      <h1 class="font-bold p-2">Welcome to SCM</h1>
+      <div class="h-28 rounded"><img 
+         onerror="this.src='https://i.pinimg.com/474x/65/25/a0/6525a08f1df98a2e3a545fe2ace4be47.jpg'"
+          th:src="@{${loggedInUser.profiePic}}" alt="user image" class="m-auto rounded-full h-full w-auto sm-h-12"></div>
+      <span class=" dark:text-white m-1" th:text="${loggedInUser.name}">harsh</span>
+      <span class="pb-2 text-gray-500 dark:text-gray-400 overflow-x-hidden m-1" th:text="${loggedInUser.email}">harsh</span>
+   </div>
+    <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+       <ul class="space-y-2 font-medium">
+          <li>
+             <a th:classappend="${currentPage == 'http://localhost:8081/user/dashboard'? 'bg-gray-300 dark:bg-gray-600' : 'bg-white dark:bg-gray-800'}" th:href="@{'/user/dashboard'}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fa-solid fa-circle-info pl-1" style="color: #929292;"></i>
+                <span class="ms-3">Dashboard</span>
+             </a>
+          </li>
+          <li>
+             <a th:classappend="${currentPage == 'http://localhost:8081/user/profile'? 'bg-gray-300 dark:bg-gray-600' : 'bg-white dark:bg-gray-800'}" th:href="@{'/user/profile'}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fa-solid fa-user pl-1" style="color: #929292;"></i>
+                <span  class="flex-1 ms-3 whitespace-nowrap">Profile</span>
+                <span class="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">Manage</span>
+             </a>
+          </li>
+          <li>
+             <a th:classappend="${currentPage == 'http://localhost:8081/user/contacts/add'? 'bg-gray-300 dark:bg-gray-600' : 'bg-white dark:bg-gray-800'}"th:href="@{'/user/contacts/add'}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fa-solid fa-plus pl-1" style="color: #929292;"></i>
+                <span class="flex-1 ms-3 whitespace-nowrap">Add Contact</span>             
+            </a>
+          </li>
+          <li>
+             <a th:classappend="${currentPage == 'http://localhost:8081/user/contacts'? 'bg-gray-300 dark:bg-gray-600' : 'bg-white dark:bg-gray-800'}"th:href="@{'/user/contacts'}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <i class="fa-solid fa-address-book pl-1" style="color: #929292;"></i>
+                <span class="flex-1 ms-3 whitespace-nowrap">Contacts</span>
+             </a>
+          </li>
+          
+       </ul>
+    </div>
+ </aside>
+ </div>
+ 

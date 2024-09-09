@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-th-replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}">
+
+<head>
+    <title>Signup page</title>
+</head>
+
+<body>
+    <div id="content">
+        <div class="grid grid-cols-12 mt-10 animate__animated animate__fadeIn">
+            <div class="md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+            <div class="col-span-12 md:col-span-8 lg:col-span-6 xl:col-span-4 animate__animated animate__fadeInUp">
+                <div
+                    class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-600 dark:border-gray-900 dark:border-t-4 dark:hover:bg-gray-700">
+
+                    <div data-th-replace="message::messageBox"></div>
+
+                    <h5
+                        class="flex justify-between mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        Signup Here <i class="fa-solid fa-user-plus"></i>
+                    </h5>
+                    <p class="font-normal text-gray-500 dark:text-gray-400">Manage your contacts.</p>
+                    <hr class="h-px my-6 bg-gray-200 border-0 dark:bg-gray-800">
+                    <p class="font-normal text-gray-500 dark:text-gray-500 mb-5"></p>
+
+                    <form th:action="@{'/do-register'}" method="post" th:object="${userForm}" novalidate>
+                        <!-- name -->
+                        <div class="mb-1 mt-5">
+                            <label for="name"
+                                class="mb-2 text-sm font-medium text-gray-900 dark:text-white flex justify-between mx-2">
+                                Name <i class="fa-solid fa-user"></i>
+                            </label>
+                            <input type="text" id="name" th:field="*{name}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="John Doe" required />
+                            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-red-600 mx-2"></p>
+                        </div>
+
+                        <!-- email -->
+                        <div class="mb-1 mt-5">
+                            <label for="email"
+                                class="mb-2 text-sm font-medium text-gray-900 dark:text-white flex justify-between mx-2">
+                                Email <i class="fa-solid fa-envelope"></i>
+                            </label>
+                            <input type="email" id="email" th:field="*{email}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="johndoe@example.com" required />
+                            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-600 mx-2"></p>
+                        </div>
+
+                        <!-- password -->
+                        <div class="mb-1 mt-5">
+                            <label for="password"
+                                class="mb-2 text-sm font-medium text-gray-900 dark:text-white flex justify-between mx-2">
+                                Password <button type="button" id="togglePassword"><i class='fa-solid fa-eye'></i></i></button>
+                            </label>
+                            <input type="password" id="password" th:field="*{password}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="New Password" required />
+                            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                class="text-red-600 mx-2"></p>
+                        </div>
+
+                        <div class="mb-1 mt-5">
+                            <label for="password"
+                                class="mb-2 text-sm font-medium text-gray-900 dark:text-white flex justify-between mx-2">
+                                Confirm Password <i class="fa-solid fa-key"></i>
+                            </label>
+                            <input type="password" id="conf_password"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Confirm password" required />
+                            <p id="msg" class="text-red-600 mx-2 hidden">Password not confirmed</p>
+                        </div>
+
+
+                        <!-- phone no -->
+                        <div class="mb-1 mt-5">
+                            <label for="contact"
+                                class="mb-2 text-sm font-medium text-gray-900 dark:text-white flex justify-between mx-2">
+                                Contact Number <i class="fa-solid fa-phone"></i>
+                            </label>
+                            <input type="text" id="contact" th:field="*{phoneNumber}"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Contact No." required />
+                            <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"
+                                class="text-red-600 mx-2"></p>
+                        </div>
+
+                        <!-- message -->
+                        <div class="mb-1 mt-5">
+                            <label for="about"
+                                class="mb-2 text-sm font-medium text-gray-900 dark:text-white mx-2 flex justify-between">
+                                About <i class="fa-solid fa-pen"></i></label>
+                            <textarea id="about" rows="4" th:field="*{about}"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Write Something About Yourself"></textarea>
+                            <p th:if="${#fields.hasErrors('about')}" th:errors="*{about}" class="text-red-600 mx-2"></p>
+                        </div>
+
+                        <!-- buttons -->
+                        <div class="mb-1 mt-5 flex justify-end">
+                            <button type="submit" id="submit-button"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Signup</button>
+
+                            <button type="reset"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Reset</button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="md:col-span-2 lg:col-span-3 xl:col-span-4"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('conf_password');
+            const contactField = document.getElementById('contact');
+            const passwordMatchMessage = document.getElementById('msg');
+            const submitButton = document.getElementById('submit-button');
+
+            confirmPasswordField.addEventListener('input', function () {
+                if (passwordField.value !== confirmPasswordField.value) {
+                    passwordMatchMessage.classList.remove('hidden');
+                    submitButton.disabled = true;
+                } else {
+                    passwordMatchMessage.classList.add('hidden');
+                    submitButton.disabled = false;
+                }
+            });
+
+            contactField.addEventListener('focus', function () {
+                if (passwordField.value !== confirmPasswordField.value) {
+                    passwordMatchMessage.classList.remove('hidden');
+                    submitButton.disabled = false;
+                }
+            });
+
+            passwordField.addEventListener('input', function () {
+                if (passwordField.value !== confirmPasswordField.value) {
+                    passwordMatchMessage.classList.remove('hidden');
+                    submitButton.disabled = true;
+                } else {
+                    passwordMatchMessage.classList.add('hidden');
+                    submitButton.disabled = false;
+                }
+            });
+
+            document.getElementById('togglePassword').addEventListener('click', function () {
+                const passwordInput = document.getElementById('password');
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+
+                // Toggle the button text
+                this.innerHTML= type === 'password' ? "<i class='fa-solid fa-eye'></i>" : "<i class='fa-solid fa-eye-slash'></i>";
+            });
+        });
+
+    </script>
+    </

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}">
+
+<head>
+    <title th:text="${loggedInUser.name}">Update user</title>
+</head>
+
+<body>
+    <section id="content">
+        <div class="p-4 sm:ml-64">
+            <div class="grid grid-cols-12 mt-10">
+                <div class="md:col-span-1 lg:col-span-2 xl:col-span-3"></div>
+                <div class="col-span-12  md:col-span-10 lg:col-span-8 xl:col-span-6">
+
+
+                    <div
+                        class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-600 dark:border-gray-900 dark:border-t-4 dark:hover:bg-gray-700">
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Update
+                                user</h5>
+                        </a>
+                        <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Have all their user info at one
+                            place.</p>
+
+                        <div th:replace="~{message::messageBox}"></div>
+
+                        <form th:action="@{'/user/update/'+${userId}}" th:object="${userForm}" method="post" enctype="multipart/form-data" novalidate>
+                            <!-- name -->
+                            <div class=" mb-6">
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Name</label>
+                                <div class="relative">
+                                    <div
+                                        class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                        <i class="fa-regular fa-user"></i>
+                                    </div>
+                                    <input th:field="*{name}" type="text"
+                                        class="bg-gray-50 border ps-10 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="John Doe">
+                                </div>
+                                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-red-600 mx-2">
+                                </p>
+                            </div>
+
+                            <!-- email -->
+                            <div class="mb-6">
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    user email</label>
+                                <div class="relative ">
+                                    <div
+                                        class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                        <i class="fa-regular fa-envelope"></i>
+                                    </div>
+                                    <input type="text" th:field="*{email}"
+                                        class="bg-gray-50 border ps-10 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="example@gmail.com">
+                                </div>
+                                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-red-600 mx-2">
+                                </p>
+
+                            </div>
+
+                            <!-- password -->
+                            <div class="mb-1 mt-5">
+                                <label for="password"
+                                    class="mb-2 text-sm font-medium text-gray-900 dark:text-white flex justify-between mx-2">
+                                    Password <i class="fa-solid fa-key"></i>
+                                </label>
+                                <input type="password" id="password" th:field="*{password}"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="New Password" required />
+                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                                    class="text-red-600 mx-2"></p>
+                            </div>
+                            
+                            <div class="mb-1 mt-5">
+                                <label for="password"
+                                    class="mb-2 text-sm font-medium text-gray-900 dark:text-white flex justify-between mx-2">
+                                    Confirm Password <i class="fa-solid fa-key"></i>
+                                </label>
+                                <input type="password" id="conf_password"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Confirm password" required />
+                                <p id="msg" class="text-red-600 mx-2 hidden">Password not confirmed</p>
+                            </div>
+    
+
+                            <!-- phoneNumber -->
+                            <div class="mb-6">
+                                <label for="phoneNumber"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    Phone Number</label>
+                                <div class="relative">
+                                    <div
+                                        class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
+                                        <i class="fa-regular fa-phone"></i>
+                                    </div>
+                                    <input type="text" th:field="*{phoneNumber}"
+                                        class="bg-gray-50 border ps-10 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="0123456789">
+                                </div>
+                                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"
+                                    class="text-red-600 mx-2"></p>
+
+                             </div>
+                             <!-- message -->
+                        <div class="mb-1 mt-5">
+                            <label for="about"
+                                class="mb-2 text-sm font-medium text-gray-900 dark:text-white mx-2 flex justify-between">
+                                About <i class="fa-solid fa-pen"></i></label>
+                            <textarea id="about" rows="4" th:field="*{about}"
+                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Write Something About Yourself"></textarea>
+                            <p th:if="${#fields.hasErrors('about')}" th:errors="*{about}" class="text-red-600 mx-2"></p>
+                        </div>
+
+                                <div class="w-full">
+
+                                    <!-- image submit -->
+                                    <div class="mb-6">
+                                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                                            for="image">user Image</label>
+                                        <input
+                                            th:field="*{userImage}" class="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-500 dark:border-gray-600 dark:placeholder-gray-400" id="image_file_input"
+                                            type="file">
+
+                                        <p th:if="${#fields.hasErrors('userImage')}" th:errors="*{userImage}"
+                                            class="text-red-600 mx-2"></p>
+                                        
+                                        <img th:src="*{picture}" id="upload_image_preview" alt=""
+                                            class="max-h-52 mx-auto rounded-lg shadow-xl mt-5">
+
+
+                                    </div>
+                                    <!-- buttons -->
+                                    <div class="button container flex justify-end">
+                                        <button type="submit" id="submit-button"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Update</button>
+
+                                        <button type="reset"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Reset</button>
+
+                                    </div>
+                        </form>
+
+                    </div>
+                    <div class="md:col-span-1 lg:col-span-2 xl:col-span-3"></div>
+                </div>
+            </div>
+            <section th:replace="~{user/sidebar :: sidebar}"></section>
+    </section>
+    <script>
+        console.log("This is the profile page");
+    </script>
+    <script th:src="@{'/js/admin.js'}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('conf_password');
+            const contactField = document.getElementById('contact');
+            const passwordMatchMessage = document.getElementById('msg');
+            const submitButton = document.getElementById('submit-button');
+
+            confirmPasswordField.addEventListener('input', function () {
+                if (passwordField.value !== confirmPasswordField.value) {
+                    passwordMatchMessage.classList.remove('hidden');
+                    submitButton.disabled = true;
+                } else {
+                    passwordMatchMessage.classList.add('hidden');
+                    submitButton.disabled = false;
+                }
+            });
+
+            contactField.addEventListener('focus', function () {
+                if (passwordField.value !== confirmPasswordField.value) {
+                    passwordMatchMessage.classList.remove('hidden');
+                    submitButton.disabled = false;
+                }
+            });
+
+            passwordField.addEventListener('input', function () {
+                if (passwordField.value !== confirmPasswordField.value) {
+                    passwordMatchMessage.classList.remove('hidden');
+                    submitButton.disabled = true;
+                } else {
+                    passwordMatchMessage.classList.add('hidden');
+                    submitButton.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

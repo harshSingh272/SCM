@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base::parent(~{::#content}, ~{::title}, ~{::script})}">
+
+<head>
+    <title th:text="${loggedInUser.name}">Profile page</title>
+</head>
+
+<body>
+    <section id="content">
+        <div class="p-4 sm:ml-64">
+            <div class="max-w-sm mx-auto bg-white shadow-lg rounded-lg overflow-hidden mt-8">
+                <div class="flex items-center flex-col justify-center dark:bg-gray-400 bg-gray-200 h-60">
+                    <img 
+                    onerror="this.src='https://i.pinimg.com/474x/65/25/a0/6525a08f1df98a2e3a545fe2ace4be47.jpg'"
+                        class="w-40 h-40 object-cover rounded-full border-4 border-white"
+                        th:src="@{${loggedInUser.profiePic}}" alt="Profile Picture" />
+                        <a th:href="@{'/user/view/'+*{loggedInUser.userId}}"><button class="bg-gray-400 dark:bg-gray-600 rounded mt-2  p-1"><i class="fa-solid fa-pen w-6"></i>Edit</button></a>
+                </div>
+                
+                <div class="p-4 dark:bg-gray-700 dark:text-white">
+                    <h2 class="text-xl font-semibold text-gray-800 dark:text-white" th:text="${loggedInUser.name}"></h2>
+                    <p class="text-gray-600 mt-2 dark:text-gray-300" th:text="${loggedInUser.about != null ? loggedInUser.about : 'A SCM user'}"></p>
+                    <div class="mt-4">
+                        <div class="flex items-center text-gray-700 dark:text-gray-300">
+                            <i class="fa-solid fa-envelope" style="color: #929292;"></i>
+                            <span class="ml-2" th:text="${loggedInUser.email}">{{email}}</span>
+                        </div>
+                        <div class="flex items-center text-gray-700 mt-2 dark:text-gray-300"> 
+                            <i class="fa-solid fa-phone" style="color: #929292;"></i>
+                            <span class="ml-2" th:text="${loggedInUser.phoneNumber != null ? loggedInUser.phoneNumber : '999-999-9999'}"></span>
+                        </div>
+                        <!-- <div class="flex items-center text-gray-700 mt-2">
+
+                            <span class="ml-2"></span>
+                        </div> -->
+                        <div class="flex items-center text-gray-700 mt-2 dark:text-gray-300">
+                            <i class="fa-solid fa-check" style="color: #929292;"></i>
+                            <span class="ml-2">Email Verified: <span class="ml-2" th:text="${loggedInUser.emailVarified == true ? 'Yes' : 'No'}"></span></span>
+                        </div>
+                        <div class="flex items-center text-gray-700 mt-2 dark:text-gray-300">
+                            <i class="fa-solid fa-globe" style="color: #929292;"></i>
+
+                            <span class="ml-2">Provider: <span class="ml-2" th:text="${loggedInUser.providers}"></span></span>
+                        </div>
+                    </div>
+                    <div class="flex justify-end">
+                    <!-- <a th:href="@{'/user/delete/'+*{loggedInUser.userId}}"><button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="bg-red-400 dark:bg-red-600 rounded mb-2 p-1"><i class="fa-solid fa-trash w-6"></i></button></a> -->
+                    <button th:onclick="deleteUser([[${loggedInUser.userId}]])" class="bg-red-400 dark:bg-red-600 rounded mb-2 p-1"><i class="fa-solid fa-trash w-6"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section th:replace="~{user/sidebar :: sidebar}"></section>
+    </section>
+    <script>
+        console.log("This is the profile page");
+    </script>
+    <script th:src="@{'/js/delete.js'}"></script>
+</body>
+
+</html>
